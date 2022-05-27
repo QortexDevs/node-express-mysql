@@ -32,5 +32,10 @@ db.sequelize.sync()
 
 require('./routes/stub.routes')(app)
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+    console.log('')
+    console.log('')
+    console.info(`Example app listening on http://wagner.stage.qortex.ru:3031/`)
+    console.info(`Adminer is listening on http://wagner.stage.qortex.ru:8031/`)
+    console.log('')
+    console.log('')
 })
