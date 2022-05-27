@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  backend:
+    image: easyum-node-backend
+    build: ./
+    container_name: easyum-node-backend
+    environment:
+      DB_HOST: db
+      DB_USER: homestead
+      DB_PASSWORD: homestead
+      DB_NAME: homestead
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "3031:3000"
+    depends_on:
+      - db
+    networks:
+      - easyum-node-backend
+
+  db:
+    image: mysql:8.0.29
+    platform: linux/amd64
+    container_name: easyum-node-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: homestead
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - easyum-node-backend
+
+  adminer:
+    image: adminer
+    container_name: easyum-node-adminer
+    ports:
+      - 8031:8080
+    depends_on:
+      - db
+    networks:
+      - easyum-node-backend
+
+networks:
+  easyum-node-backend:
+
+volumes:
+  database:
