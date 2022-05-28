@@ -7,4 +7,4 @@ set -e
 /wait-for-it.sh db:3306
 
 # Run the main container command.
-node /app/src/server.js
+nodemon node /app/src/server.js
