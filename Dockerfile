@@ -8,4 +8,4 @@ COPY ./wait-for-it.sh /
 COPY ./entrypoint.sh /
 WORKDIR /app/src
 COPY . .
-CMD [ "nodemon", "node", "server.js" ]
+CMD [ "/entrypoint.sh" ]
