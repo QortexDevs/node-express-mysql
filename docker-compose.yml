@@ -29,6 +29,8 @@ services:
       MYSQL_USER: homestead
       MYSQL_PASSWORD: homestead
       MYSQL_ROOT_HOST: '%'
+    security_opt:
+      - seccomp:unconfined
     volumes:
       - database:/var/lib/mysql
     networks:
