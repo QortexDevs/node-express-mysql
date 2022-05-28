@@ -7,4 +7,4 @@ ENV PATH=/app/node_modules/.bin:$PATH
 
 WORKDIR /app/src
 COPY . .
-CMD [ "node", "server.js" ]
+CMD [ "nodemon", "node", "server.js" ]
