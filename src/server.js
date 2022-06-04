@@ -29,31 +29,31 @@ app.get('/', (req, res) => {
 
 const db = require('./models')
 // production
-//db.sequelize.sync()
+db.sequelize.sync({ alter: true })
 
 // development
-const Role = db.role
-db.sequelize.sync({ force: true }).then(() => {
-  console.log('Drop and Resync Db')
-  initial()
-})
+// const Role = db.role
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log('Drop and Resync Db')
+//   initial()
+// })
 
-function initial () {
-  Role.create({
-    id: 1,
-    name: 'user'
-  })
+// function initial () {
+//   Role.create({
+//     id: 1,
+//     name: 'user'
+//   })
 
-  Role.create({
-    id: 2,
-    name: 'moderator'
-  })
+//   Role.create({
+//     id: 2,
+//     name: 'moderator'
+//   })
 
-  Role.create({
-    id: 3,
-    name: 'admin'
-  })
-}
+//   Role.create({
+//     id: 3,
+//     name: 'admin'
+//   })
+// }
 
 require('./routes/auth.routes')(app)
 require('./routes/user.routes')(app)
